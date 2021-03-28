@@ -32,7 +32,7 @@ class CategoryController extends Controller
     {
         request()-> validate([
             'name' => 'required',
-            'description' => 'required',
+            'author' => 'required',
         ]);
     
         return Category::create([

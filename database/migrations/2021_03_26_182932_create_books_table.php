@@ -13,17 +13,19 @@ class CreateBooksTable extends Migration
      */
     public function up()
     {
+        Schema::dropIfExists('books');
+
         Schema::create('books', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->string('author');
-            $table->bigInt('id_category');
+            $table->bigInteger('category_id')->unsigned();
             $table->date('publication_date');
-            $table->bigInt('id_user');
+            $table->bigInteger('user_id')->nullable()->unsigned();
             $table->timestamps();
 
-            $table->foreign('id_category')->references('id')->on('categories');
-            $table->foreign('id_user')->references('id')->on('users');
+            $table->foreign('category_id')->references('id')->on('categories');
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 
