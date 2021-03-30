@@ -31,6 +31,13 @@ Start the server
 
 **Note: This project is made to run on por :8000 please make sure this is the case on your running server**
 
+You can check the api routes available using this command
+### `php artisan route:list`
+The routes can be checked from postman or any HTTP Client
+
+Check a video of the working app!
+[![App Video](https://img.youtube.com/vi/H4kLkAWY5JU/0.jpg)](https://www.youtube.com/watch?v=H4kLkAWY5JU)
+
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
