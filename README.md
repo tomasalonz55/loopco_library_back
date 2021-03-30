@@ -26,6 +26,9 @@ fill in the DB_HOST, DB_PORT, DB_DATABASE, DB_USERNAME, and DB_PASSWORD options 
 Migrate the database
 ### `php artisan migrate`
 
+Install Passport to generate the Keys
+### `php artisan passport:install`
+
 Start the server
 ### `php artisan serve`
 
