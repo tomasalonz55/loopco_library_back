@@ -36,6 +36,7 @@ You can check the api routes available using this command
 The routes can be checked from postman or any HTTP Client
 
 Check a video of the working app!
+
 [![App Video](https://img.youtube.com/vi/H4kLkAWY5JU/0.jpg)](https://www.youtube.com/watch?v=H4kLkAWY5JU)
 
 ## License
