@@ -15,8 +15,8 @@ class BookController extends Controller
      */
     public function index()
     {
-        $books = Book::paginate(1);
-        return response()-> json($books,200);
+        $books = Book::with('category')->with('user')->paginate(6);
+        return response()-> json($books, 200);
     }
 
     /**
@@ -26,7 +26,6 @@ class BookController extends Controller
      */
     public function create()
     {
-        
     }
 
     /**
@@ -63,7 +62,8 @@ class BookController extends Controller
      */
     public function show($id)
     {
-        return Book::findOrFail($id);
+        $book = Book::with('category')->with('user')->findOrFail($id);
+        return response()-> json($book, 200);
     }
 
     /**
@@ -86,7 +86,16 @@ class BookController extends Controller
      */
     public function update(Book $book)
     {
-        request()-> validate([
+        if (count(request()->all())== 1) {
+            $success = $book->update([
+                'user_id' => request('user_id'),
+            ]);
+        
+            return [
+                'success' => $success
+            ];
+        } else {
+            request()-> validate([
             'name' => 'required',
             'author' => 'required',
             'category_id' => 'required',
@@ -94,18 +103,18 @@ class BookController extends Controller
 
         ]);
     
-        $success = $book->update([
+            $success = $book->update([
             'name' => request('name'),
             'author' => request('author'),
             'category_id' => request('category_id'),
             'publication_date' => request('publication_date'),
-            'user_id' => request('user_id'),
             'image' => request('image'),
         ]);
     
-        return [
+            return [
             'success' => $success
         ];
+        }
     }
 
     /**
